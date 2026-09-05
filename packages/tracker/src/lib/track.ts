@@ -92,7 +92,9 @@ export async function trackPageview(
 
     const { hostname, path } = getHostnameAndPath(url, true);
     const referrer = getBrowserReferrer(hostname, opts.referrer || "");
-    const utmParams = getUtmParamsFromBrowserUrl(url);
+    const utmParams = getUtmParamsFromBrowserUrl(
+        opts.url || window.location.search,
+    );
 
     let hitType: string | undefined;
     try {
